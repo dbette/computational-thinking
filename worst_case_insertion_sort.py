@@ -17,7 +17,7 @@ def sorting(cards):
     
 def iteration(number_iteration, number_cards):
     measure_time = []
-    for i in range(0, number_iteration):
+    for _ in range(0, number_iteration):
         cards = create_cards_worst(number_cards)
         start = time.time()
         sorting(cards)
