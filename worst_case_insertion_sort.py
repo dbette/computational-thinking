@@ -28,6 +28,6 @@ def iteration(number_iteration, number_cards):
 
 time_cards = []
 
-for number_cards in [10, 100, 1000, 10000]:
+for number_cards in [10, 100, 1000, 10000, 100000]:
     time_in_sec = iteration(1, number_cards)
     time_cards.append(time_in_sec)
