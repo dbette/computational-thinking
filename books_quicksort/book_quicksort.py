@@ -11,7 +11,7 @@ class Book:
         for i in self.author:
             output += "Author: " + str(i) + "\n"
         output += "ISBN: " + self.isbn + "\n"
-        output += "Pages: " + self.pages
+        output += "Pages: " + str(self.pages)
         return output
     
     def __gt__(self, other):
@@ -27,20 +27,20 @@ book1 = Book()
 book1.title = "No bullshit guide to linear algebra"
 book1.add_author("Ivan Savov")
 book1.isbn = "0992001021" 
-book1.pages = "570"
+book1.pages = 570
 
 book2 = Book()
 book2.title = "Look Who's Back"
 book2.add_author("Timur Vermes")
 book2.add_author("Jamie Bulloch")
 book2.isbn = "9780857054135" 
-book2.pages = "384"
+book2.pages = 384
 
 book3 = Book()
 book3.title = "Rich Dad Poor Dad"
 book3.add_author("Robert T. Kiyosaki")
 book3.isbn = "1612680194" 
-book3.pages = "240"
+book3.pages = 240
 
 print(book1)
 print(book2)
