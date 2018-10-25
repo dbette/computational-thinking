@@ -124,7 +124,14 @@ def fibonacci(number):
 # Increasing number check #
 ###########################################
 
-
+# First a check is performed whether a list is passed as an argument. If this is
+# the case each element in the list is iterated and the first two elements are
+# compared. As long as the second element is greater than the first element, the
+# index of the list is increased by one and the next two elements are compared.
+# If there is one comparison where the second item is smaller than the first
+# item, the loop is exited and the boolean False is returned. However if the second
+# element is always greater than the first element and the end of the list is
+# reached, the function returns True.
 
 def increase_check(input_list):
     """ Returns True if all the numbers in the provided input_list are increasing.
@@ -146,8 +153,74 @@ def increase_check(input_list):
     except TypeError:
         return "Error: Element in list has wrong type for comparison!"
 
-print(increase_check([1, 3, 4, 5, 6, 8, 10, 14]))
-print(increase_check([1, 4, 5, 6, 8, 10, 9, 13]))
-print(increase_check(["a", "b", "c", "d", "e", "f"]))
-print(increase_check(["a", "b", "c", 8, "e", "f"]))
-print(increase_check(1))
+#print(increase_check([1, 3, 4, 5, 6, 8, 10, 14]))
+#print(increase_check([1, 4, 5, 6, 8, 10, 9, 13]))
+#print(increase_check(["a", "b", "c", "d", "e", "f"]))
+#print(increase_check(["a", "b", "c", 8, "e", "f"]))
+#print(increase_check(1))
+
+
+###########################################
+# Longest sequence of increasing numbers #
+###########################################
+
+
+###########################################
+# Anagram #
+###########################################
+
+# Define function with two input parameters string1 and string2 
+
+# Check if the two input parameters have the type str. If not return a error
+# message.
+ 
+# Clean both strings by converting it to lowercases and remove
+# unnecessary whitespaces.
+
+# Compare string1 with the reversed string2
+
+# Return True if they are equal and False if they are different
+
+def anagram(string1, string2):
+    if type(string1) != str or type(string2) != str:
+        return 'Error: Please provide two strings for comparison!'
+    else:
+        return string1.strip().lower() == string2.strip().lower()[::-1]
+
+#print(anagram('anagram', 'margana'))
+#print(anagram('anagrame', 'margana'))
+#print(anagram('anagram', 1))
+
+
+###########################################
+# Calculate frequencies #
+###########################################
+
+# The algorithm takes a list as an input parameter. First it is checked, whether
+# a list is provided. If that's not the case an error message is provided. A
+# further check is performed whether all elements in the list is of the type
+# string. A for loop is used to itereate over all elements in the list. The
+# strings are converted to lowercases and unnecessary whitespaces are removed.
+# For each word in the list it is checked whether the word is already included
+# in the dictionary. If it is already included in the dict the counter of the
+# element is increased by one. Else it is added to the dict and initialized with
+# a value of 1. 
+
+def frequencies(text):
+    output = {}
+    if type(text) != list:
+        return "Error: Please provide a list of strings as an input!"
+    try:
+        for i in text:
+            word = i.strip().lower()
+            if word not in output:
+                output[word] = 1
+            else:
+                output[word] += 1
+        return output
+    except:
+        return "Error: Please use only use strings as an input!"
+
+#print(frequencies(['hi', 'I', 'am', 'Alex', 'would', 'just', 'like', 'hi', 'say', 'hi']))
+#print(frequencies(['hi', 'I', 'am', 'Alex', 'would', 1, 'like', 'hi', 'say', 'hi']))
+#print(frequencies('test'))
