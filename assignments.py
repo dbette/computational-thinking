@@ -141,6 +141,10 @@ def increase_check(input_list):
 
     Returns:
         boolean: True if all numbers in the input_list are increasing.
+
+    Error:
+        Input error: Input is not a list.
+        Type error: Elements in list have the wrong type for comparison.
     """
     if type(input_list) != list:
         return "Error: Please provide a list as an input!"
@@ -163,6 +167,50 @@ def increase_check(input_list):
 ###########################################
 # Longest sequence of increasing numbers #
 ###########################################
+
+def longest_seq(input_list):
+    """ Prints out the longest sequence of increasing numbers
+
+    Args:
+        input_list: List of numbers.
+    
+    Returns:
+        list: Longest list of increasing numbers
+    
+    Errors:
+        Input error: Input is not a list.
+        Type error: Elements in list have the wrong type for comparison.
+    """
+
+    if type(input_list) != list:
+        return "Error: Please provide a list as an input!"
+    
+    try:
+        seq = []
+
+        for i in range(0, len(input_list)):
+            if i==0:
+                seq.append([input_list[i]])
+            elif input_list[i] > seq[-1][-1]:
+                seq[-1].append(input_list[i])
+            else:
+                seq.append([input_list[i]])
+
+        longest_len = 0
+
+        for i in seq:
+            if len(i) > longest_len:
+                longest_len = len(i)
+                longest_list = i
+
+        return longest_list
+
+    except TypeError:
+        return "Error: Element in list has wrong type for comparison!"
+
+
+#print(longest_seq([1, 4, 5, -1, 0, 6, 8, 10, 9, 13]))
+#print(longest_seq([1, "A", 5, -1, 0, 6, 8, 10, 9, 13]))
 
 
 ###########################################
@@ -224,3 +272,43 @@ def frequencies(text):
 #print(frequencies(['hi', 'I', 'am', 'Alex', 'would', 'just', 'like', 'hi', 'say', 'hi']))
 #print(frequencies(['hi', 'I', 'am', 'Alex', 'would', 1, 'like', 'hi', 'say', 'hi']))
 #print(frequencies('test'))
+
+
+###########################################
+# Vigenere Cipher #
+###########################################
+
+class Cipher:
+ 
+    def __init__(self, text):
+        self.text = text
+        self.encoded_text = None
+
+    def encode(self, key):
+        encoded_text = ""
+        for i in range(0, len(self.text)):
+            letter = self.text[i] 
+            key_index = i % len(key)
+            key_letter = key[key_index]
+            en_letter = chr((ord(letter) + ord(key_letter)) % 128)
+            encoded_text += en_letter
+        self.encoded_text = encoded_text
+        return encoded_text
+    
+    def decode(self, key):
+        decoded_text = ""
+        for i in range(0, len(self.encoded_text)):
+            letter = self.encoded_text[i] 
+            key_index = i % len(key)
+            key_letter = key[key_index]
+            de_letter = chr((ord(letter) - ord(key_letter)) % 128)
+            decoded_text += de_letter
+        return decoded_text
+
+Test = Cipher("This text should be encoded!")
+print(Test.encode(key="fjio!jf+"))
+print(Test.decode(key="fjio!jf+"))
+
+# Example with wrong key
+print(Test.decode(key="jo$jif+"))
+
