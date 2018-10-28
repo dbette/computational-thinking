@@ -279,7 +279,8 @@ def frequencies(text):
 ###########################################
 
 class Cipher:
- 
+    """ Class for encoding and decoding text with a specific key """
+
     def __init__(self, text):
         self.text = text
         self.encoded_text = None
@@ -305,10 +306,10 @@ class Cipher:
             decoded_text += de_letter
         return decoded_text
 
-Test = Cipher("This text should be encoded!")
-print(Test.encode(key="fjio!jf+"))
-print(Test.decode(key="fjio!jf+"))
+#Test = Cipher("This text should be encoded!")
+#print(Test.encode(key="fjio!jf+"))
+#print(Test.decode(key="fjio!jf+"))
 
 # Example with wrong key
-print(Test.decode(key="jo$jif+"))
+#print(Test.decode(key="jo$jif+"))
 
