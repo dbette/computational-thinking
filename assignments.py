@@ -338,5 +338,5 @@ y = x           # y is assigned to the same list object as x -> Passed by refere
 x = [3, 4, 5]   # x is assigned to a new list, however y still points to the previous 
                 # list of x [0]
                 
-print(x)
+#print(x)
 print(y)
