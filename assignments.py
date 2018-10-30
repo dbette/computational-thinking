@@ -280,7 +280,6 @@ def frequencies(text):
 
 class Cipher:
     """ Class for encoding and decoding text with a specific key """
-
     def __init__(self, text):
         self.text = text
         self.encoded_text = None
@@ -313,3 +312,31 @@ class Cipher:
 # Example with wrong key
 #print(Test.decode(key="jo$jif+"))
 
+
+###########################################
+# Call by reference or value #
+###########################################
+
+x = 5
+y = x   # Value is passed to y -> y = 5
+x = 3   # Value of x is overwritten, however y doesn't change, 
+        # because it points to the value of 5 and not to the reference of x
+
+#print(x)
+#print(y)
+
+x = [0]
+y = x           # y is assigned to the same list object as x -> Passed by reference
+x.append(1)     # List is changed and the changes are visible in x and y, because 
+                # they both point to the same list
+
+#print(x)
+#print(y)
+
+x = [0]
+y = x           # y is assigned to the same list object as x -> Passed by reference
+x = [3, 4, 5]   # x is assigned to a new list, however y still points to the previous 
+                # list of x [0]
+                
+print(x)
+print(y)
